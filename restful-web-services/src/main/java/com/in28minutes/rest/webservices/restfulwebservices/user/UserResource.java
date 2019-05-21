@@ -33,7 +33,7 @@ public class UserResource {
 	public void addUser(@RequestBody User user)
 	{
 	
-		service.save(user);
+		User savedUser=service.save(user);
 	}
 	
 }
