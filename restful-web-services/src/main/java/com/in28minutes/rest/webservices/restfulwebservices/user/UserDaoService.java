@@ -33,6 +33,11 @@ public class UserDaoService {
 	 }
 	 
 	 public User findOne(int id) {
-		 return (User) users.stream().filter(user->user.getId()==id).collect(Collectors.toList()).get(0);
+		for(User user: users) {
+			if(user.getId()==id)
+				return user;
+			
+		}
+		return null;
 	 }
 }
