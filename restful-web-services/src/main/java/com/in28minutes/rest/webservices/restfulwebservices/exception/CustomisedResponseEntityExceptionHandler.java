@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +34,14 @@ public class CustomisedResponseEntityExceptionHandler extends ResponseEntityExce
 		
 
 	}
+
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		// TODO Auto-generated method stub
+		ExceptionResponse exceptionResponse=new ExceptionResponse(new Date(), "validation failed",ex.getBindingResult().toString());
+		return new ResponseEntity<Object>(exceptionResponse,HttpStatus.NOT_FOUND);
+	}
+	
+	
 }

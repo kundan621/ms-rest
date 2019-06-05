@@ -33,11 +33,16 @@ public class UserDaoService {
 	 }
 	 
 	 public User findOne(int id) {
-		for(User user: users) {
-			if(user.getId()==id)
-				return user;
-			
-		}
-		return null;
+		return users.parallelStream().filter(p->p.getId()==id).findAny().orElse(null);
 	 }
+	 
+	 public User deleteOne(int id) {
+			User user= users.parallelStream().filter(p->p.getId()==id).findAny().orElse(null);
+			if(user!=null) {
+				users.remove(user);
+				return user;
+			}
+			else
+				return null;
+		 }
 }
