@@ -55,6 +55,7 @@ public class UserResource {
 	
 	
 	//add user
+	//send status as created: status 201
 	@PostMapping("/users")
 	public ResponseEntity<Object> addUser(@Valid @RequestBody User user)
 	{
