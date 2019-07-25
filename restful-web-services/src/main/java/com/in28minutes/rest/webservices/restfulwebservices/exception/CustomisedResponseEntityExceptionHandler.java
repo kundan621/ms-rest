@@ -13,6 +13,11 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.in28minutes.rest.webservices.restfulwebservices.user.UserNotFoundException;
+/**
+ * At one place tell what message to return wen getting a exception
+ * @author kunda
+ *
+ */
 @RestController
 @ControllerAdvice
 public class CustomisedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -21,7 +26,7 @@ public class CustomisedResponseEntityExceptionHandler extends ResponseEntityExce
 	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) throws Exception {
 		
 		ExceptionResponse exceptionResponse=new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-		return new ResponseEntity(exceptionResponse,HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<Object>(exceptionResponse,HttpStatus.INTERNAL_SERVER_ERROR);
 		
 
 	}

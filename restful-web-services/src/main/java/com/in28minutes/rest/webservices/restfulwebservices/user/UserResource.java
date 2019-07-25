@@ -49,7 +49,7 @@ public class UserResource {
 	public void deleteOneUser(@PathVariable int id) {
 		User user= service.deleteOne(id);
 		if(user==null)
-			throw new UserNotFoundException("id="+id);
+			throw new UserNotFoundException("id="+id);//annoted with 404 else 500 error gets thrown
 		//return user;
 	}
 	

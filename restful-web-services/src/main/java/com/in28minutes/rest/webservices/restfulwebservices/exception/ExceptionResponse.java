@@ -2,7 +2,7 @@ package com.in28minutes.rest.webservices.restfulwebservices.exception;
 
 import java.util.Date;
 /**
- * to make it standard across each ws
+ * to make it standard across each ws a ccustome structure
  * @author kkumar42
  *
  */
